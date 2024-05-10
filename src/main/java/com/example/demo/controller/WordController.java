@@ -26,7 +26,6 @@ public class WordController {
     // GET endpoint to retrieve a word by its name
     @GetMapping("/{word}")
     public ResponseEntity<Word> getWord(@PathVariable String word) {
-        Optional<Word> test = wordRepository.findByWord(word);
         return wordRepository.findByWord(word)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
@@ -35,8 +34,6 @@ public class WordController {
     // Endpoint to get the first five words
     @GetMapping("/first-five")
     public List<Word> getFirstFiveWords() {
-        List<Word> words = wordRepository.findFirst5ByOrderByWordAsc();
-        System.out.println("Number of words fetched: " + words.size());
         return wordRepository.findFirst5ByOrderByWordAsc();
     }
 
