@@ -7,7 +7,6 @@ import java.util.List;
 @Document(collection = "wordsGeEn")
 public class Word {
     
-    @Id
     private String word;
     private List<String> translations;
 
